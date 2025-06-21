@@ -14,7 +14,6 @@ class PlipAdapter(nn.Module):
         self.D = 128
         self.K = 1
 
-        # 特征提取层
         self.feature = nn.Sequential(
             nn.Linear(input_dim, 512),
             nn.ReLU(),
@@ -210,7 +209,7 @@ def count_matching_elements(list1, list2):
     return sum(1 for x, y in zip(list1, list2) if x == y)
 
 def main(seed, num_samples):
-    # 设置提示词
+
     prompts = ["This is an H&E image of normal axillary lymph node tissue.",
                "This is an H&E image of axillary lymph node tissue containing metastases."]
     device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -236,9 +235,7 @@ def main(seed, num_samples):
         val_labels = [all_labels[i] for i in val_index]
     ini_train_dataset = CustomDatasetFromList(train_data, train_labels)
 
-    # for few-shots
     train_dataset = BalancedCustomDataset(ini_train_dataset, num_samples)
-
 
     train_loader = DataLoader(train_dataset, batch_size=1, shuffle=True, num_workers=2, pin_memory=True)
 
