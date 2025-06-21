@@ -10,9 +10,9 @@ from sklearn.metrics import roc_auc_score, f1_score, precision_score, recall_sco
 class PlipAdapter(nn.Module):
     def __init__(self, input_dim, load_length):
         super(PlipAdapter, self).__init__()
-        self.L = 512  # 隐藏层维度
-        self.D = 128  # 注意力层中间维度
-        self.K = 1  # 注意力头的数量
+        self.L = 512 
+        self.D = 128  
+        self.K = 1 
 
         self.feature = nn.Sequential(
             nn.Linear(input_dim, 512),
@@ -85,10 +85,8 @@ class PartiallyFilteredCustomDataset(Dataset):
     def __getitem__(self, idx):
         data_path = self.filtered_data_files[idx]
 
-        # 加载.pt文件中的数据
         data = torch.load(data_path)
 
-        # 获取特征和标签
         features = data['feature']
         labels = data['label']
 
@@ -166,7 +164,7 @@ def count_matching_elements(list1, list2):
     return sum(1 for x, y in zip(list1, list2) if x == y)
 
 def main(seed):
-    # 设置提示词
+
     prompts = ["This is an H&E image of invasive ductal carcinoma tissue.",
                "This is an H&E image of invasive lobular carcinoma tissue."]
     device = "cuda" if torch.cuda.is_available() else "cpu"
