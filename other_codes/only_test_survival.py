@@ -16,7 +16,6 @@ class PlipAdapter(nn.Module):
         self.D = 128
         self.K = 1
 
-        # 特征提取层
         self.feature = nn.Sequential(
             nn.Linear(input_dim, 512),
             nn.ReLU(),
@@ -25,7 +24,6 @@ class PlipAdapter(nn.Module):
 
         self.rrt = RRTEncoder(mlp_dim=512,epeg_k=15,crmsa_k=3)
 
-        # 注意力层
         self.attention = nn.Sequential(
             nn.Linear(self.L, self.D),
             nn.Tanh(),
