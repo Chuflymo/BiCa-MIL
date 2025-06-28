@@ -1,3 +1,3 @@
 # BiCa-MIL
-Under update
-![这是图片](/fig/Fig.png)
+## Under update
+![](/fig/Fig.png)
