@@ -19,7 +19,6 @@ def adapter_vis(model_save_path,raw_feature_path, feature_save_path):
         for root, dirs, files in os.walk(directory):
             for file in files:
                 if file.endswith('.pt'):
-                    # 获取文件的完整路径
                     file_path = os.path.join(root, file)
                     name = file.split('.')[-2]
                     draw_data = torch.load(file_path)
@@ -39,7 +38,6 @@ def ab_vis(model_save_path,raw_feature_path, feature_save_path):
         for root, dirs, files in os.walk(directory):
             for file in files:
                 if file.endswith('.pt'):
-                    # 获取文件的完整路径
                     file_path = os.path.join(root, file)
                     name = file.split('.')[-2]
                     draw_data = torch.load(file_path)
@@ -220,7 +218,6 @@ def main():
     for root, dirs, files in os.walk(directory_1):
         for file in files:
             if file.endswith('.pt'):
-                # 获取文件的完整路径
                 file_path = os.path.join(root, file)
                 name = file.split('.')[-2].split('_')[0] + '_' + file.split('.')[-2].split('_')[1]
                 plip_feat = torch.load(file_path)
