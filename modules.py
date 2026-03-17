@@ -100,7 +100,6 @@ class Generator(nn.Module):
         self.D = 128
         self.K = 1
 
-        # 特征提取层
         self.feature = nn.Sequential(
             nn.Linear(input_dim, 512),
             nn.ReLU(),
@@ -109,7 +108,6 @@ class Generator(nn.Module):
 
         self.rrt = RRTEncoder(mlp_dim=input_dim, epeg_k=epeg_k, crmsa_k=crmsa_k)
 
-        # 注意力层
         self.attention = nn.Sequential(
             nn.Linear(self.L, self.D),
             nn.Tanh(),
