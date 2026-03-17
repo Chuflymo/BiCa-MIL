@@ -28,7 +28,6 @@ def read_annotation(anno_file,return_type=False):
     anno_tumor = []
     anno_normal = []
     anno_type = set()
-    # 使用minidom解析器打开 XML 文档
     DOMTree = xml.dom.minidom.parse(anno_file)
     annotations = DOMTree.documentElement.getElementsByTagName('Annotations')[0].getElementsByTagName('Annotation')
     for i in range(len(annotations)):
@@ -64,7 +63,6 @@ def get_label(coords, anno_file, _l=None):
     annos_normal_polygon = [Polygon(_anno) for _anno in annos_normal]
     annos_tumor_in_normal_idx = []
 
-    # 有一部分tumor是在exclusion里面，需要区别出这些tumor出来
     for idx, _anno in enumerate(annos_tumor_polygon):
         for _anno_1 in annos_normal_polygon:
             if _anno.covered_by(_anno_1):
