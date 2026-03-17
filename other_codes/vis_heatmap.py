@@ -21,7 +21,6 @@ def read_annotation(anno_file,return_type=False):
     anno_tumor = []
     anno_normal = []
     anno_type = set()
-    # 使用minidom解析器打开 XML 文档
     DOMTree = xml.dom.minidom.parse(anno_file)
     annotations = DOMTree.documentElement.getElementsByTagName('Annotations')[0].getElementsByTagName('Annotation')
     for i in range(len(annotations)):
